@@ -10,25 +10,25 @@ This chapter reviews basic mechanisms of Prolog through an example program. Alto
 
 (a) `?- parent(jim,X).`
 
-```
+```prolog
 false.
 ```
 
 (b) `?- parent(X,jim).`
 
-```
+```prolog
 X = pat.
 ```
 
 (c) `?- parent(pam,X), parent(X,pat).`
 
-```
+```prolog
 X = bob.
 ```
 
 (d) `?- parent(pam,X), parent(X,Y), parent(Y,jim).`
 
-```
+```prolog
 X = bob,
 Y = pat.
 ```
@@ -37,21 +37,21 @@ Y = pat.
 
 (a) Whos is Pat's parent?
 
-```
+```prolog
 ?- parent(X,pat).
 X = bob.
 ```
 
 (b) Does Liz have a child?
 
-```
+```prolog
 ?- parent(liz,X).
 false.
 ```
 
 (c) Whos is Pat's grandparent?
 
-```
+```prolog
 ?- parent(X,pat), parent(Y,X).
 X = bob,
 Y = pam ;
@@ -67,14 +67,14 @@ Y = tom.
 
 (a) Everybody who has a child is happy (introduce a one-argument relation **happy**).
 
-```
+```prolog
 happy(X) :-
     parent(X,Y).
 ```
 
 (b) For all X, if X has a child who has a sister then X has two children (introduce new relation **hastwochildren**).
 
-```
+```prolog
 hastwochildren(X) :-
     parent(X,Y),
     sister(Y,Z).
@@ -82,7 +82,7 @@ hastwochildren(X) :-
 
 #### 1.4 Define the relation grandchild using the parent relation. Hint: It will be similar to the grandparent relation.
 
-```
+```prolog
 grandchild(X,Z) :-
     parent(Z,Y),
     parent(Y,X).
@@ -90,7 +90,7 @@ grandchild(X,Z) :-
 
 #### 1.5 Define the relation aunt(X, Y) in terms of the relations parent and sister.
 
-```
+```prolog
 aunt(X,Z) :-
     parent(Y,Z),
     sister(X,Y).
@@ -101,7 +101,7 @@ aunt(X,Z) :-
 
 #### 1.6 Consider the following alternative definition of the predecessor relation:
 
-```
+```prolog
 predecessor(X,Z) :-
     parent(X,Z).
 
@@ -116,7 +116,7 @@ A: No, because it only considers the first parent relation between X and Z. This
 
 This can be shown when we use this definition to search for the sucessors of pam.
 
-```
+```prolog
 ?- predecessor(pam,X).
 X = bob ;
 X = bob ;
