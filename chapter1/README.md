@@ -59,11 +59,11 @@ X = bob,
 Y = tom.
 ```
 
-## 1.2 Extending the example program by rules
+## 1.2 - Extending the example program by rules
 
 ### Exercises 
 
-#### 1.3 - Translate the following statements into Prolog rules:
+#### 1.3 Translate the following statements into Prolog rules:
 
 (a) Everybody who has a child is happy (introduce a one-argument relation **happy**).
 
@@ -95,3 +95,41 @@ aunt(X, Z) :-
     parent(Y, Z),
     sister(X, Y).
 ```
+## 1.3 - A recursive rule definition
+
+### Exercises 
+
+#### 1.6 Consider the following alternative definition of the predecessor relation:
+
+```
+predecessor(X,Z) :-
+    parent(X,Z).
+
+predecessor(X,Z) :-
+    parent(X,Z),
+    predecessor(X,Y).
+```
+
+Does this also seem to be a proper definition of predecessors? Can you modify the diagram of Figure 1.7 so that it would correspond to this new definition?
+
+A: No, because it only considers the first parent relation between X and Z. This means that everytime the predecessor relation is called recursively, it will return again the first parent relation between X and some Y. 
+
+This can be shown when we use this definition to search for the sucessors of pam.
+
+```
+?- predecessor(pam, X).
+X = bob ;
+X = bob ;
+X = bob ;
+X = bob ;
+X = bob ;
+X = bob .
+```
+
+Therefore, the diagram could not be modified to correspond to this new definition.
+
+## 1.4 - How Prolog answers questions
+
+### Exercises
+
+#### 1.7 
