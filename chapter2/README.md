@@ -196,7 +196,7 @@ translate(3, three).
 
 #### 2.9 Consider the program in Figure 2.10 and simulate, in the style of Figure 2.10, Prolog's execution of the question:
 
-```
+```prolog
 ?- big(X), dark(X).
 ```
 
@@ -212,10 +212,28 @@ translate(3, three).
 
 Compare your execution trace with that of Figure 2.10 when the question was essentially the same, but with the goals in the order:
 
-```
+```prolog
 ?- dark(X), big(X).
 ```
 
 In which of the two cases does Prolog have to do more work before the answer is found?
 
 *In both cases Prolog has to do the same amount of work, the only difference being the order of the steps done.*
+
+## 2.7 - Remarks on the relation between Prolog and logic
+
+### Exercises
+
+#### 2.10  What happens if we ask Prolog:
+
+```prolog
+?- X = f(X).
+```
+
+Should this request for matching succeed or fail? According to the definition of unification in logic this should fail, but what happens according to our definition of matching in Section 2.2? Try to explain why many Prolog implementations answer the question above with:
+
+```prolog
+X = f(f(f(f(f(f(f(f(f(f(f(f(f(f( ...
+```
+
+*The request succeeds, and ir returns X = f(X). This because Prolog will instantiate the variable X with a structure of itself.*
