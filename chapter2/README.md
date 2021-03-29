@@ -8,16 +8,16 @@ This chapter gives a systematic treatment of the syntaz and semantics of basic c
 
 #### 2.1 Which of the following are syntactically correct Prolog objects? What kinds of object are they (atom, number, variable, structure)?
 
-(a) Diana: *Correct. This is a variable.*
-(b) diana: *Correct. This is an atom.*
-(c) 'Diana': *Correct. This is an atom.*
-(d) _diana: *Correct. This is a variable.*
-(e) 'Diana goes south': *Correct. This is an atom.*
-(f) goes(diana,south): *Correct. This is a structure.*
-(g) 45: *Correct. This is a number.*
-(h) 5(X,Y): *Incorrect. Functors can't start with numbers.*
-(i) +(north,west): *Correct. This is a structure.*
-(j) three(Black(Cats)): *Incorrect. We can define "three" as functor, but "Black" would be a variable.*
+1. Diana: *Correct. This is a variable.*
+2. diana: *Correct. This is an atom.*
+3. 'Diana': *Correct. This is an atom.*
+4. _diana: *Correct. This is a variable.*
+5. 'Diana goes south': *Correct. This is an atom.*
+6. goes(diana,south): *Correct. This is a structure.*
+7. 45: *Correct. This is a number.*
+8. 5(X,Y): *Incorrect. Functors can't start with numbers.*
+9. +(north,west): *Correct. This is a structure.*
+10. three(Black(Cats)): *Incorrect. We can define "three" as functor, but "Black" would be a variable.*
 
 #### 2.2 Suggest a representation for rectangles, squares and circles as structured Prolog objects. Use an approach similar to that in Figure 2.4. For example, a rectangle can be represented by four points (or maybe three points only). Write some example terms that represent some concrete objects of these types using the suggested representation.
 
@@ -200,15 +200,15 @@ translate(3, three).
 ?- big(X), dark(X).
 ```
 
-*(1) Initial goal list: big(X), dark(X).*
-*(2) Scan the program for a clause that matches big(X). `big(bear).` found.*
-    *This clause has no body, so the goal list shrinks to `dark(X).`.*
-*(3) Scan the program by the goal dark(X). Clause `dark(Z) :- black(Z).` found.*
-    *Replace the goal by the body of the clause found: black(X).*
-*(4) Scan the program for the goal black(bear). No clause found. Backtracks to step (3).*
-*(5) Scan the program by the goal dark(X). Clause `dark(Z) :- brown(Z).` found.*
-    *Replace the goal by the body of the clause found: brown(X).*
-*(6) Scan the program by the goal brown(bear). Clause 4 found. It has no body so the goal list shrinks to empty. This indicates successful termination, and the corresponding variable instantiation is: X = bear.*
+1. Initial goal list: big(X), dark(X).
+2. Scan the program for a clause that matches big(X). `big(bear).` found.
+   This clause has no body, so the goal list shrinks to `dark(X).`.
+3. Scan the program by the goal dark(X). Clause `dark(Z) :- black(Z).` found.
+   Replace the goal by the body of the clause found: black(X).
+4. Scan the program for the goal black(bear). No clause found. Backtracks to step (3).
+5. Scan the program by the goal dark(X). Clause `dark(Z) :- brown(Z).` found.
+   Replace the goal by the body of the clause found: brown(X).
+6. Scan the program by the goal brown(bear). Clause 4 found. It has no body so the goal list shrinks to empty. This indicates successful termination, and the corresponding variable instantiation is: X = bear.
 
 Compare your execution trace with that of Figure 2.10 when the question was essentially the same, but with the goals in the order:
 
