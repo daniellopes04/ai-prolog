@@ -140,17 +140,15 @@ parent(pam,bob) <-- yes
 
 (b) `?- mother(pam,bob).`
 
-mother(pam,bob) <-- parent(pam,bob) <-- yes
-                    female(pam)
+mother(pam,bob) <-- parent(pam,bob), female(pam) <-- yes
 
 (c) `?- grandparent(pam,ann).`
 
-gradparent(pam,ann) <-- parent(pam,Y) <-- Y = bob -- yes
-                        parent(Y,ann) 
+gradparent(pam,ann) <-- parent(pam,Y), parent(Y,ann) <-- Y = bob -- yes 
 
 (d) `?- grandparent(bob,jim).`
 
-grandparent(bob,jim) <-- parent(bob,Y) <-- Y = ann -- no
-                         parent(Y,jim) <-- y = pat -- yes
+grandparent(bob,jim) <-- parent(bob,Y), parent(Y,jim) <-- Y = ann -- no
+grandparent(bob,jim) <-- parent(bob,Y), parent(Y,jim) <-- Y = pat -- yes
 
 In this case, there is backtracking.
