@@ -149,6 +149,7 @@ gradparent(pam,ann) <-- parent(pam,Y), parent(Y,ann) <-- Y = bob -- yes
 (d) `?- grandparent(bob,jim).`
 
 grandparent(bob,jim) <-- parent(bob,Y), parent(Y,jim) <-- Y = ann -- no
+
 grandparent(bob,jim) <-- parent(bob,Y), parent(Y,jim) <-- Y = pat -- yes
 
 In this case, there is backtracking.
