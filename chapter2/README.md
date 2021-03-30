@@ -22,12 +22,15 @@ This chapter gives a systematic treatment of the syntaz and semantics of basic c
 #### 2.2 Suggest a representation for rectangles, squares and circles as structured Prolog objects. Use an approach similar to that in Figure 2.4. For example, a rectangle can be represented by four points (or maybe three points only). Write some example terms that represent some concrete objects of these types using the suggested representation.
 
 ```prolog
-rectangle(Point1, Width, Height).
+rectangle(point(X, Y), point(X, Y1), point(X1, Y), point(X1, Y1)).
 
-square(Point1, Width).
-square(rectangle(Point1, Width, Width)).
+square(point(X, Y), point(X, Y1), point(X1, Y), point(X1, Y1)) :-
+    rectangle(point(X, Y), point(X, Y1), point(X1, Y), point(X1, Y1)),
+    H is (X1 - X),
+    V is (Y1 - Y),
+    H = V.
 
-circle(Point1, Radius).
+circle(center(X, X), radius(X, Y)).
 ```
 
 
