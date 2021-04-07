@@ -2,11 +2,9 @@
 
 This chapter gives a systematic treatment of the syntaz and semantics of basic concepts of Prolog, and introduces structured data objects. Most of the topics included have already been reviewed in Chapter 1. Here the treatment will become more formal and detailed.
 
-## 2.1 - Data objects
+## Exercises 
 
-### Exercises 
-
-#### 2.1 Which of the following are syntactically correct Prolog objects? What kinds of object are they (atom, number, variable, structure)?
+### 2.1 Which of the following are syntactically correct Prolog objects? What kinds of object are they (atom, number, variable, structure)?
 
 1. Diana: *Correct. This is a variable.*
 2. diana: *Correct. This is an atom.*
@@ -19,7 +17,7 @@ This chapter gives a systematic treatment of the syntaz and semantics of basic c
 9. +(north,west): *Correct. This is a structure.*
 10. three(Black(Cats)): *Incorrect. We can define "three" as functor, but "Black" would be a variable.*
 
-#### 2.2 Suggest a representation for rectangles, squares and circles as structured Prolog objects. Use an approach similar to that in Figure 2.4. For example, a rectangle can be represented by four points (or maybe three points only). Write some example terms that represent some concrete objects of these types using the suggested representation.
+### 2.2 Suggest a representation for rectangles, squares and circles as structured Prolog objects. Use an approach similar to that in Figure 2.4. For example, a rectangle can be represented by four points (or maybe three points only). Write some example terms that represent some concrete objects of these types using the suggested representation.
 
 ```prolog
 rectangle(point(X, Y), point(X, Y1), point(X1, Y), point(X1, Y1)).
@@ -34,11 +32,7 @@ circle(center(X, X), radius(X, Y)).
 ```
 
 
-## 2.2 - Matching
-
-### Exercises 
-
-#### 2.3 Will the following matching operations succeed or fail? If they succeed, what are the resulting instantiations of variables?
+### 2.3 Will the following matching operations succeed or fail? If they succeed, what are the resulting instantiations of variables?
 
 (a) `point(A,B) = point(1,2)`
 
@@ -76,13 +70,13 @@ P1 = point(-1, 0).
 
 *This defines the family of triangles that has the segment [-1,1] on the x-axis as base and height defined in the y-axis.*
 
-#### 2.4 Using the representation for line segments as described in this section, write a term that represents any vertical line segment at x = 5.
+### 2.4 Using the representation for line segments as described in this section, write a term that represents any vertical line segment at x = 5.
 
 ```prolog
 vertical(seg(point(5, Y), P)).
 ```
 
-#### 2.5 Assume that a rectangle is represented by the term rectangle(P1,P2,P3,P4) where the P's are the vertices of the rectangle positively ordered. Define the relation regular(R) which is true if R is a rectangle whose sides are vertical and horizontal.
+### 2.5 Assume that a rectangle is represented by the term rectangle(P1,P2,P3,P4) where the P's are the vertices of the rectangle positively ordered. Define the relation regular(R) which is true if R is a rectangle whose sides are vertical and horizontal.
 
 ```prolog
 regular(rectangle(Point1, Point2, Point3, Point4)) :-
@@ -92,11 +86,7 @@ regular(rectangle(Point1, Point2, Point3, Point4)) :-
     horizontal(seg(Point1, Point4)).
 ```
 
-## 2.3 - Declarative meaning of Prolog programs
-
-### Exercises
-
-#### 2.6 Consider the following program:
+### 2.6 Consider the following program:
 
 ```prolog
 f(1,one).
@@ -142,7 +132,7 @@ D = s(s(s(s(s(s(s(s(s(s(...)))))))))) ;
 D = s(s(s(s(s(s(s(s(s(s(...)))))))))) .
 ```
 
-#### 2.7 the following program says that two people are relatives if
+### 2.7 the following program says that two people are relatives if
 
 (a) one is a predecessor of the other, or
 (b) they have a common predecessor, or
@@ -178,7 +168,7 @@ relatives(X, Y) :-
     predecessor(Y, Z).
 ```
 
-#### 2.8 Rewrite the following program without using the semicolon notation.
+### 2.8 Rewrite the following program without using the semicolon notation.
 
 ```prolog
 translate(Number,Word) :-
@@ -193,11 +183,7 @@ translate(2, two).
 translate(3, three).
 ```
 
-## 2.4 - Procedural meaning
-
-### Exercises
-
-#### 2.9 Consider the program in Figure 2.10 and simulate, in the style of Figure 2.10, Prolog's execution of the question:
+### 2.9 Consider the program in Figure 2.10 and simulate, in the style of Figure 2.10, Prolog's execution of the question:
 
 ```prolog
 ?- big(X), dark(X).
@@ -223,11 +209,7 @@ In which of the two cases does Prolog have to do more work before the answer is 
 
 *In both cases Prolog has to do the same amount of work, the only difference being the order of the steps done.*
 
-## 2.7 - Remarks on the relation between Prolog and logic
-
-### Exercises
-
-#### 2.10  What happens if we ask Prolog:
+### 2.10  What happens if we ask Prolog:
 
 ```prolog
 ?- X = f(X).
