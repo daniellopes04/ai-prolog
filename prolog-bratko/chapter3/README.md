@@ -16,32 +16,32 @@ In this chapter we will study a special notation for lists, one of the simplest 
 last(Item,List)
 ``` 
 
-so that Item is the last element of a list List. Write two versions: (a) using the conc relation, (b) without conc.
+### so that Item is the last element of a list List. Write two versions: (a) using the conc relation, (b) without conc.
 
 ### 3.3 Define two predicates 
 
 ```prolog
-evenlength(List)
-oddlength(List) 
+evenlength(List).
+oddlength(List).
 ```
 
-so they are true if their argument is a list of even or odd length respectively. For example, the list [a,b,c,d] is 'evenlength' and [a,b,c] is 'oddlength'.
+### so they are true if their argument is a list of even or odd length respectively. For example, the list [a,b,c,d] is 'evenlength' and [a,b,c] is 'oddlength'.
 
 ### 3.4 Define the relation 
 
 ```prolog
-reverse(List,ReversedList) 
+reverse(List,ReversedList)
 ```
 
-that reverses lists. For example, reverse([a,b,c,d],[d,c,b,a]).
+### that reverses lists. For example, reverse([a,b,c,d],[d,c,b,a]).
 
 ### 3.5 Define the predicate 
 
 ```prolog
-palindrome(List). 
+palindrome(List)
 ```
 
-A list is a palindrome if it reads the same in the forward and in the backward direction. For example, [m,a,d,a,m].
+### A list is a palindrome if it reads the same in the forward and in the backward direction. For example, [m,a,d,a,m].
 
 ### 3.6 Define the relation
 
@@ -49,14 +49,13 @@ A list is a palindrome if it reads the same in the forward and in the backward d
 shift(List1,List2)
 ```
 
-so that List2 is List1 'shifted rotationally' by one element to the left. For example,
+### so that List2 is List1 'shifted rotationally' by one element to the left. For example,
 
 ```prolog
-?- shift([1,2,3,4,5],L1),
-shift(L1,L2).
+?- shift([1,2,3,4,5],L1),shift(L1,L2).
 ```
 
-produces:
+### produces:
 
 ```prolog
 L1 = [2,3,4,5,1]
@@ -69,13 +68,13 @@ L2 = [3,4,5,1,2]
 translate(List1,List2)
 ```
 
-to translate a list of numbers between 0 and 9 to a list of the corresponding words. For example:
+### to translate a list of numbers between 0 and 9 to a list of the corresponding words. For example:
 
 ```prolog
 translate([3,5,1,3],[three,five,one,three])
 ```
 
-Use the following as an auxiliary relation:
+### Use the following as an auxiliary relation:
 
 ```prolog
 means(0,zero).
@@ -90,7 +89,7 @@ means(2,two).
 subset(Set,Subset)
 ```
 
-where Set and Subset are two lists representing two sets. We would like to be able to use this relation not only to check for the subset relation, but also to generate all possible subsets of a given set. For example:
+### where Set and Subset are two lists representing two sets. We would like to be able to use this relation not only to check for the subset relation, but also to generate all possible subsets of a given set. For example:
 
 ```prolog
 ?- subset([a,b,c],S).
@@ -109,7 +108,11 @@ S = [a] ;
 dividelist(List,List1,List2)
 ```
 
-so that the elements of **List** are partitioned between **List1** and **List2**, and **List1** and **List2** are approximately the same length. For example, ```partition([a,b,c,d,e],[a,c,e],[b,d]).```
+### so that the elements of List are partitioned between List1 and List2, and List1 and List2 are approximately the same length. For example, 
+
+```prolog
+partition([a,b,c,d,e],[a,c,e],[b,d]).
+```
 
 ### 3.11 Define the relation 
 
@@ -117,7 +120,7 @@ so that the elements of **List** are partitioned between **List1** and **List2**
 flatten(List,FlatList)
 ```
 
-where **List** can be a list of lists, and **FlatList** is **List** 'flattened' so that the elements of **List**'s sublists (or sub-sublists) are reorganized as one plain list. For example:
+### where List can be a list of lists, and FlatList is List 'flattened' so that the elements of List's sublists (or sub-sublists) are reorganized as one plain list. For example:
 
 ```prolog
 ?- flatten([a,b,[c,d],[],[[[e]]],f],L).
