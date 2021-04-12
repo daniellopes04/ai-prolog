@@ -8,7 +8,18 @@ In this chapter we will study a special notation for lists, one of the simplest 
 
 #### (a) Write a goal, using conc, to delete the last three elements from a list L producing another list L1. Hint: L is the concatenation of L1 and a three-element list.
 
+```prolog
+deleteLast3(L,R) :-
+    append(R,[_,_,_],L).
+```
+
 #### (b) Write a sequence of goals to delete the first three elements and the last three elements from a list L producing list L2.
+
+```prolog
+deleteFirstLast3(L,R) :-
+    append([_,_,_],R,L),
+    append(R,[_,_,_],L).
+```
 
 ### 3.2 Define the relation 
 
