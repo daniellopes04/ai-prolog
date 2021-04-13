@@ -16,9 +16,12 @@ deleteLast3(L,R) :-
 #### (b) Write a sequence of goals to delete the first three elements and the last three elements from a list L producing list L2.
 
 ```prolog
+deleteFirst3(L,R) :-
+    append([_,_,_],R,L).
+
 deleteFirstLast3(L,R) :-
-    append([_,_,_],R,L),
-    append(R,[_,_,_],L).
+    deleteFirst3(L,R1),
+    deleteLast3(R1,R).
 ```
 
 ### 3.2 Define the relation 
