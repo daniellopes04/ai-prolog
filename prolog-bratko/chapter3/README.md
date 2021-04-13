@@ -57,6 +57,16 @@ oddlength(List).
 
 ### so they are true if their argument is a list of even or odd length respectively. For example, the list [a,b,c,d] is 'evenlength' and [a,b,c] is 'oddlength'.
 
+```prolog
+evenlength([]).
+
+evenlength([_|L]) :-
+    oddlength(L).
+
+oddlength([_|L]) :-
+    evenlength(L).
+```
+
 ### 3.4 Define the relation 
 
 ```prolog
