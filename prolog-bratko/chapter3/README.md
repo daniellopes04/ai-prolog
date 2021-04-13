@@ -10,14 +10,14 @@ In this chapter we will study a special notation for lists, one of the simplest 
 
 ```prolog
 deleteLast3(L,R) :-
-    append(R,[_,_,_],L).
+    conc(R,[_,_,_],L).
 ```
 
 #### (b) Write a sequence of goals to delete the first three elements and the last three elements from a list L producing list L2.
 
 ```prolog
 deleteFirst3(L,R) :-
-    append([_,_,_],R,L).
+    conc([_,_,_],R,L).
 
 deleteFirstLast3(L,R) :-
     deleteFirst3(L,R1),
@@ -30,7 +30,23 @@ deleteFirstLast3(L,R) :-
 last(Item,List)
 ``` 
 
-### so that Item is the last element of a list List. Write two versions: (a) using the conc relation, (b) without conc.
+### so that Item is the last element of a list List. Write two versions: 
+
+#### (a) using the conc relation. 
+
+```prolog
+last(X,L) :-
+    conc(_,[X],L).
+```
+
+#### (b) without conc.
+
+```prolog
+last2(X,[X]).
+
+last2(X,[_|L]) :-
+    last2(X,L).
+```
 
 ### 3.3 Define two predicates 
 
