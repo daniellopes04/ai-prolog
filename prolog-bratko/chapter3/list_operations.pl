@@ -97,7 +97,7 @@ reverse([X|L],RL) :-
 % Subtracts one list from another
 difference([],_,[]).
 
-difference([X|L1],L2,L3) :-			% First case: element of L1 is in L2
+difference([X|L1],L2,L3) :-		% First case: element of L1 is in L2
     member(X,L2),
     !,
     difference(L1,L2,L3).
@@ -134,11 +134,11 @@ flatten2([Head|Tail],FlatList):-
 % Returns the sum of the elements in a sublist of a given list
 subsum([],0,[]).
 
-subsum([X|L],N,[X|L1]) :-			% First case: element of L is in sublist L1
+subsum([X|L],N,[X|L1]) :-		% First case: element of L is in sublist L1
     N1 is N-X,
     N1 >= 0,
     subsum(L,N1,L1).
     
     
-subsum([_|L],N,L1) :-				% Second case: element of L is not in sublist L1
+subsum([_|L],N,L1) :-			% Second case: element of L is not in sublist L1
     subsum(L,N,L1).
