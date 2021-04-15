@@ -37,6 +37,41 @@ last2(X,[X]).
 last2(X,[_|L]) :-
     last2(X,L).
 
+% Adds a new element in front of the list
+add(X,L,[X|L]).
+
+% Deletes an item X from a list
+del(X,[X|Tail],Tail).
+
+del(X,[Y|Tail],[Y|Tail1]) :-
+    del(X,Tail,Tail1).
+
+% Inserts an item at any place in the list
+insert(X,List,BiggerList) :-
+    del(X,BiggerList,List).
+
+% Checks if X is member of List using del
+member2(X,List) :-
+    del(X,List,_).
+
+% Checks if S is a sublist of L
+sublist(S,L) :-
+    append(_,L2,L),
+    append(S,_,L2).
+
+% Generates permutations of a given list
+permutation([],[]).
+
+permutation([X|L],P) :-
+    permutation(L,L1),
+    insert(X,L1,P).
+
+permutation2([],[]).
+
+permutation2(L,[X|P]) :-
+    del(X,L,L1),
+    permutation2(L1,P).
+
 % Checks if list lenght is even
 evenlength([]).
 
@@ -48,9 +83,5 @@ oddlength([_|L]) :-
     evenlength(L).
 
 % Reverses a given list L into a reversed list RL
-reverse([L],L).
-
 reverse([X|L],RL) :-
-    reverse(L,Z),
-    append(Z,[X],RL).
-    
+    permutation([L|X],RL).
