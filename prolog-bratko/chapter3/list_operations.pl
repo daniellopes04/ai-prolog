@@ -1,5 +1,5 @@
 % ------------------------------------------------
-% 				List Operations
+% List Operations
 % ------------------------------------------------
 
 % Checks if X is member of list L
