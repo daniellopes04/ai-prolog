@@ -1,16 +1,16 @@
-% Adiciona um elemento a uma lista ordenada
+% Adds one element to a ordered list
 
-% Caso base: inserindo o elemento numa lista vazia
-insereListaOrdenada(X,[],[X]).       
+% Case 0: adding the element to a empty list
+addOrdered(X,[],[X]).       
 
-% Caso 1: o elemento é menor do que o cabeça da lista
-% Inserimos o elemento no começo da lista
-insereListaOrdenada(X,[Head|Tail],[X,Head|Tail]) :-	
+% Case 1: the element is less than the head of the list
+% We insert it on the beginning of the list
+addOrdered(X,[Head|Tail],[X,Head|Tail]) :-	
     X =< Head.								              
 
-% Caso 2: o elemento é maior do que o cabeça da lista
-% Nesse caso, sabemos que o cabeça da lista continuará como tal
-% E vamos chamar novamente a função com a cauda da lista
-insereListaOrdenada(X,[Head|Tail],[Head|Tail2]) :-	  
+% Case 2: the element is bigger than the head of the list
+% In this case, the head of the list will stay unaltered
+% We call the predicate again with the list tail
+addOrdered(X,[Head|Tail],[Head|Tail2]) :-	  
     X > Head,								                
     addOrdered(X,Tail,Tail2).				        
