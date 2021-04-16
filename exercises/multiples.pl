@@ -1,20 +1,20 @@
-% Dado um número X maior ou igual a zero, retorna em uma lista L, todos os múltiplos de 4 que são menores ou iguais a X
+% Returns a list L with all the multiples of 4 that are less than or equal a given number X >= 0
 
-% Caso base: 0 é múltiplo de todos os números naturais
+% Case 0: 0 is multiple of every natural number
 multiples4(0,[0]).
 
-% Caso 1: O número X é múltiplo de 4
-% Nesse caso, adicionamos X à lista se o módulo de X por 4 é zero
-% Checamos então se X-1 é múltiplo de 4
+% Case 1: The number X is multiple of 4
+% In this case, we add X to the list if X % 4 = 0
+% We check then if X-1 is multiple of 4
 multiples4(X,[X|Tail]) :-
     R is X mod 4,
     R = 0,
     X1 is X-1,
-    X1 > 0,                 % Garantimos que não ultrapasse o caso base com X1 negativo
+    X1 > 0,                 % Make sure that X1 don't go past 0 into negative
     multiples4(X1,Tail).
 
-% Caso 2: O número X não é múltiplo de 4
-% Nesse caso, apenas prosseguimos para X-1
+% Case 2: The number X is not multiple of 4
+% Then, we just proceed to X-1
 multiples4(X,L) :-
     R is X mod 4,
     R > 0,
