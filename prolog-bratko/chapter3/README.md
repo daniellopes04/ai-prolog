@@ -75,6 +75,14 @@ reverse(List,ReversedList)
 
 ### that reverses lists. For example, reverse([a,b,c,d],[d,c,b,a]).
 
+```prolog
+reverse([],[]).
+
+reverse([X|L],RL) :-
+    reverse(L,L1),
+    append(L1,[X],RL).
+```
+
 ### 3.5 Define the predicate 
 
 ```prolog
@@ -82,6 +90,12 @@ palindrome(List)
 ```
 
 ### A list is a palindrome if it reads the same in the forward and in the backward direction. For example, [m,a,d,a,m].
+
+
+```prolog
+palindrome(List) :-
+    reverse(List,List).
+```
 
 ### 3.6 Define the relation
 
@@ -100,6 +114,13 @@ shift(List1,List2)
 ```prolog
 L1 = [2,3,4,5,1]
 L2 = [3,4,5,1,2]
+```
+
+A:
+
+```prolog
+shift([X|L1],L2) :-
+    conc(L1,[X],L2).
 ```
 
 ### 3.7 Define the relation
@@ -121,6 +142,15 @@ means(0,zero).
 means(1,one).
 means(2,two).
 ...
+```
+
+A:
+
+```prolog
+translate([],[]).
+translate([X|L],[Y|TL]) :-
+    means(X,Y),
+    translate(L,TL).
 ```
 
 ### 3.8 Define the relation
@@ -165,4 +195,17 @@ flatten(List,FlatList)
 ```prolog
 ?- flatten([a,b,[c,d],[],[[[e]]],f],L).
 L = [a,b,c,d,e,f] .
+```
+
+A:
+
+```prolog
+flatten([Head|Tail],FlatList):-
+    flatten(Head,FlatHead),
+    flatten(Tail,FlatTail),
+	append(FlatHead,FlatTail,FlatList).
+
+flatten([],[]).
+
+flatten(X,[X]).
 ```
