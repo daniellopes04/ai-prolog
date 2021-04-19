@@ -91,8 +91,34 @@ oddlength([_|L]) :-
 reverse([],[]).
 
 reverse([X|L],RL) :-
-    add(X,RL,RL),
-    reverse(L,RL).
+    reverse(L,L1),
+    append(L1,[X],RL).
+    
+% Checks if a list is a palindrome
+palindrome(L) :-
+    reverse(L,L).
+    
+% Shifts a list by one element to the left
+shift([X|L1],L2) :-
+    append(L1,[X],L2).
+
+% Translates a list of numbers (0-9) into their respective names
+means(0,zero).
+means(1,one).
+means(2,two).
+means(3,three).
+means(4,four).
+means(5,five).
+means(6,six).
+means(7,seven).
+means(8,eight).
+means(9,nine).
+
+translate([],[]).
+
+translate([X|L],[Y|TL]) :-
+    means(X,Y),
+    translate(L,TL).
 
 % Subtracts one list from another
 difference([],_,[]).
@@ -106,7 +132,7 @@ difference([X|L1],L2,[X,L3]) :-		% Second case: element of L1 is not in L2
     difference(L1,L2,L3).
 
 % Subtracts one list from another, considering its permutations
-difference1(L1,L2,L3) :-			
+differencePermutation(L1,L2,L3) :-			
     difference(L1,L2,L),
     permutation(L,L3).
 
@@ -120,16 +146,6 @@ flatten([],[]).
 
 flatten(X,[X]).
 
-% Flattens a list so that its sublists are reorganized as one plain list using cut
-flatten2([],[]).
-
-flatten2([Head|Tail],FlatList):-
-    flatten(Head,FlatHead),
-    flatten(Tail,FlatTail),
-    !,
-	append(FlatHead,FlatTail,FlatList).
-
-% flatten2(X,[X]).
 
 % Returns the sum of the elements in a sublist of a given list
 subsum([],0,[]).
