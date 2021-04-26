@@ -8,12 +8,16 @@ In this chapter we will study a special notation for lists, one of the simplest 
 
 #### (a) Write a goal, using conc, to delete the last three elements from a list L producing another list L1. Hint: L is the concatenation of L1 and a three-element list.
 
+A:
+
 ```prolog
 deleteLast3(L,R) :-
     conc(R,[_,_,_],L).
 ```
 
 #### (b) Write a sequence of goals to delete the first three elements and the last three elements from a list L producing list L2.
+
+A:
 
 ```prolog
 deleteFirst3(L,R) :-
@@ -34,12 +38,16 @@ last(Item,List)
 
 #### (a) using the conc relation. 
 
+A:
+
 ```prolog
 last(X,L) :-
     conc(_,[X],L).
 ```
 
 #### (b) without conc.
+
+A:
 
 ```prolog
 last2(X,[X]).
@@ -56,6 +64,8 @@ oddlength(List).
 ```
 
 ### so they are true if their argument is a list of even or odd length respectively. For example, the list [a,b,c,d] is 'evenlength' and [a,b,c] is 'oddlength'.
+
+A:
 
 ```prolog
 evenlength([]).
@@ -75,6 +85,8 @@ reverse(List,ReversedList)
 
 ### that reverses lists. For example, reverse([a,b,c,d],[d,c,b,a]).
 
+A:
+
 ```prolog
 reverse([],[]).
 
@@ -91,6 +103,7 @@ palindrome(List)
 
 ### A list is a palindrome if it reads the same in the forward and in the backward direction. For example, [m,a,d,a,m].
 
+A:
 
 ```prolog
 palindrome(List) :-
