@@ -27,24 +27,29 @@ grandparent(X,Z) :-     % X is a grandparent of Z if
 sister(X,Y) :-          % X is a sister of Y if
     parent(Z,X),
     parent(Z,Y),        % X and Y have the same parent and
-    female(X),          % X is female and
-    different(X,Y).     % X and Y are different
+    female(X).          % X is female and
+    % different(X,Y).     % X and Y are different
 
-grandchild(X,Z) :-      % X is a grandchild of Z if
-    parent(Z,Y),        % Z is parent of Y and
-    parent(Y,X).        % Y is parent of X
-
-aunt(X,Z) :-            % X is a aunt of Z if
-    parent(Y,Z),        % Y is parent of Z and
-    sister(X,Y).        % X and Y are sisters
-
+% 1.3 (a)
 hastwochildren(X) :-    % X has two children if
     parent(X,Y),        % X is parent of Y and
     sister(Y,Z).        % Y has a sister
 
+% 1.3 (b)
 happy(X) :-             % X is happy if
-    parent(X,Y).        % X is a parent
+    parent(X,Z).        % X is a parent
 
+% 1.4
+grandchild(X,Z) :-      % X is a grandchild of Z if
+    parent(Z,Y),        % Z is parent of Y and
+    parent(Y,X).        % Y is parent of X
+
+% 1.5
+aunt(X,Z) :-            % X is a aunt of Z if
+    parent(Y,Z),        % Y is parent of Z and
+    sister(X,Y).        % X and Y are sisters
+
+% Recursion example
 predecessor(X,Z) :-     % Rule pr1: X is a direct predecessor of Z
     parent(X,Z).
 

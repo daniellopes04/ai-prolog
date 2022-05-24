@@ -50,7 +50,7 @@ false.
 (c) Whos is Pat's grandparent?
 
 ```prolog
-?- parent(X,pat), parent(Y,X).
+?- parent(X,Y), parent(Y,pat).
 X = bob,
 Y = pam ;
 X = bob,
